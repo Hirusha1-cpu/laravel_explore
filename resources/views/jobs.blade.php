@@ -9,9 +9,11 @@
             <a href="/jobs/{{$job['id']}}">
                 
                 <strong>{{$job['title']}}</strong>: Pays {{$job['salary']}}
+              
             </a>
         </li>
         @endforeach
     </ul>
 
 </x-layout>
+
