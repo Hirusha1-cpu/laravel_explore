@@ -2,18 +2,18 @@
     <x-slot:heading>
         Jobs Page
     </x-slot:heading>
-    <ul>
-
-        @foreach($jobs as $job)
+    <div>
+        @foreach($jobs as $job) <!-- Use $jobs instead of $jobss -->
         <li>
             <a href="/jobs/{{$job['id']}}">
-                
-                <strong>{{$job['title']}}</strong>: Pays {{$job['salary']}}
-              
+                <div class="font-bold">{{$job->employer->name}}</div> <!-- Access employer relationship -->
+                <strong>{{$job['title']}}</strong>: Pays {{$job['salary']}} per year
             </a>
         </li>
         @endforeach
-    </ul>
 
+        <div>
+            {{ $jobs->links() }} <!-- Pagination links for jobs -->
+        </div>
+    </div>
 </x-layout>
-

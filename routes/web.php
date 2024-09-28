@@ -16,11 +16,18 @@ Route::get('/', function () {
     // dd($jobs[0]->salary);
 });
 
-Route::get('/jobs', function (){
-    return view('jobs', [
-        'jobs' => Job::all()
-    ]);
+// Route::get('/jobs', function (){
+//     $jobs = Job::with('employer')->paginate(3);
+//     return view('jobs', [
+//         // 'jobs' => Job::all()
+//         compact('jobss')
+//     ]);
+// });
+Route::get('/jobs', function () {
+    $jobs = Job::with('employer')->paginate(3); // Paginate the jobs
+    return view('jobs', compact('jobs')); // Fix compact() variable
 });
+
 Route::get('/jobs/{id}', function ($id) {
     // $job = Arr::first(job::all(), fn($job) => $job['id'] == $id);
     $job = Job::find($id);
